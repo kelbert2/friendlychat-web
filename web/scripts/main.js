@@ -158,25 +158,48 @@ function onMessageFormSubmit(e) {
     // console.log(messageInputElement.value);
     // let content = [{'Text' : messageInputElement.value}];
     // console.log(Translate(JSON.stringify(content)));
-      let chosenLanguage = $("#selectTargetLanguage :selected").val();
-      // console.log(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`);
-      postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: messageInputElement.value}])
-          .then(data => saveMessage(data[0].translations[0].text).then(function() {
-              // Clear message text field and re-enable the SEND button.
-              resetMaterialTextfield(messageInputElement);
-              toggleButton();
-          })) // JSON-string from `response.json()` call
-          .catch(error => console.error(error));
+    //   let chosenLanguage = $("#selectTargetLanguage :selected").val();
+    //   // console.log(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`);
+    //   postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: messageInputElement.value}])
+    //       .then(data => saveMessage(data[0].translations[0].text).then(function() {
+    //           // Clear message text field and re-enable the SEND button.
+    //           resetMaterialTextfield(messageInputElement);
+    //           toggleButton();
+    //       })) // JSON-string from `response.json()` call
+    //       .catch(error => console.error(error));
+      saveMessage(messageInputElement.value).then(function() {
+                    // Clear message text field and re-enable the SEND button.
+                    resetMaterialTextfield(messageInputElement);
+                    toggleButton();
+                }) // JSON-string from `response.json()` call
+                .catch(error => console.error("Save message error: " + error));
   }
 }
-
-// translateMessage(callback) => json{
-//     let chosenLanguage = $("#selectTargetLanguage :selected").val();
-//     postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: messageInputElement.value}])
-//         return data;
-//
-// }
-
+function translateMessage(message) {
+    let chosenLanguage = $("#selectTargetLanguage :selected").val();
+    console.log("message: "+ message);
+    postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: message}])
+        .then(function(data) {
+          console.log("translation: " + data[0].translations[0].text);
+          return data[0].translations[0].text;
+          // TODO might not be returning, because not displaying in the app
+        })
+        .catch(function(error) {
+          console.error("Translate message error: " + error);
+          return message;
+        }
+        );
+    // try {
+    //     postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: message}])
+    //         .then(function(data) {
+    //             return data[0].translations[0].text;
+    //         })
+    // } catch(error) {
+    //     console.error("Translate message error: " + error);
+    //     return message;
+    // }
+// TODO maybe also report this as an error using reportError()
+}
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
 function authStateObserver(user) {
   if (user) { // User is signed in!
@@ -236,7 +259,10 @@ var MESSAGE_TEMPLATE =
     '<div class="message-container">' +
       '<div class="spacing"><div class="pic"></div></div>' +
       '<div class="message"></div>' +
+      '<div class="message-bottom"> ' +
       '<div class="name"></div>' +
+      '<button class="error-button mdl-button mdl-js-button mdl-button--accent" title="Report Error" onclick="reportError()"><i class="material-icons">error</i></button>' +
+      '</div>' +
     '</div>';
 
 // A loading image URL.
@@ -259,7 +285,15 @@ function displayMessage(key, name, text, picUrl, imageUrl) {
   div.querySelector('.name').textContent = name;
   var messageElement = div.querySelector('.message');
   if (text) { // If the message is text.
-    messageElement.textContent = text;
+    try {
+        messageElement.textContent = translateMessage(text);
+    } catch (error) {
+      messageElement.textContent = text;
+      console.error("Loading translation error: " + error);
+    }
+
+
+
     // TODO may need to translate here
     // Replace all line breaks by <br>.
     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
@@ -313,6 +347,8 @@ var userNameElement = document.getElementById('user-name');
 var signInButtonElement = document.getElementById('sign-in');
 var signOutButtonElement = document.getElementById('sign-out');
 var signInSnackbarElement = document.getElementById('must-signin-snackbar');
+var languageSelectorElement = document.getElementById('selectTargetLanguage');
+//var targetLanguageCode = languageSelectorElement.options[languageSelectorElement.selectedIndex].value;
 
 // Saves message on form submit.
 messageFormElement.addEventListener('submit', onMessageFormSubmit);
@@ -323,7 +359,8 @@ signInButtonElement.addEventListener('click', signIn);
 messageInputElement.addEventListener('keyup', toggleButton);
 messageInputElement.addEventListener('change', toggleButton);
 
-// TODO add click event listener for change in selection
+//  Signals change in language selector
+//languageSelectorElement.addEventListener('change', translateMessage);
 
 // Events for image upload.
 imageButtonElement.addEventListener('click', function(e) {
@@ -332,6 +369,21 @@ imageButtonElement.addEventListener('click', function(e) {
 });
 mediaCaptureElement.addEventListener('change', onMediaFileSelected);
 
+// Error reporting
+function reportError(messageText, ){
+  console.log("there's an error");
+    return firebase.database().ref('/errors/').push({
+        originalText: messageText,
+        translatedText: messageText,
+        targetLanguage: getProfilePicUrl()
+    }).catch(function(error) {
+        console.error('Error reporting error to Firebase Database', error);
+    });
+}
+
+function loadImages(){
+
+}
 // initialize Firebase
 initFirebaseAuth();
 

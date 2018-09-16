@@ -1,28 +1,24 @@
-[debug] [2018-09-16T16:24:30.333Z] ----------------------------------------------------------------------
-[debug] [2018-09-16T16:24:30.336Z] Command:       /usr/local/Cellar/node/10.10.0/bin/node /usr/local/bin/firebase serve --only hosting
-[debug] [2018-09-16T16:24:30.336Z] CLI Version:   4.2.1
-[debug] [2018-09-16T16:24:30.336Z] Platform:      darwin
-[debug] [2018-09-16T16:24:30.336Z] Node Version:  v10.10.0
-[debug] [2018-09-16T16:24:30.338Z] Time:          Sun Sep 16 2018 12:24:30 GMT-0400 (Eastern Daylight Time)
-[debug] [2018-09-16T16:24:30.338Z] ----------------------------------------------------------------------
+[debug] [2018-09-16T22:10:38.229Z] ----------------------------------------------------------------------
+[debug] [2018-09-16T22:10:38.232Z] Command:       /usr/local/Cellar/node/10.10.0/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2018-09-16T22:10:38.232Z] CLI Version:   4.2.1
+[debug] [2018-09-16T22:10:38.232Z] Platform:      darwin
+[debug] [2018-09-16T22:10:38.232Z] Node Version:  v10.10.0
+[debug] [2018-09-16T22:10:38.243Z] Time:          Sun Sep 16 2018 18:10:38 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-09-16T22:10:38.243Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-09-16T16:24:30.355Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-09-16T16:24:30.355Z] > authorizing via signed-in user
-[debug] [2018-09-16T16:24:30.359Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2018-09-16T16:24:30.359Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
-
-[debug] [2018-09-16T16:24:30.555Z] <<< HTTP RESPONSE 200
-[debug] [2018-09-16T16:24:30.594Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/kelbert-translator-chat  
+[debug] [2018-09-16T22:10:38.265Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-16T22:10:38.265Z] > authorizing via signed-in user
+[debug] [2018-09-16T22:10:38.268Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/kelbert-translator-chat  
  
-[debug] [2018-09-16T16:24:30.861Z] <<< HTTP RESPONSE 200
-[debug] [2018-09-16T16:24:30.863Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/kelbert-translator-chat  
+[debug] [2018-09-16T22:10:38.617Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-16T22:10:38.619Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/kelbert-translator-chat  
  
-[debug] [2018-09-16T16:24:30.989Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-16T22:10:38.768Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Users/admin/Documents/HCI/friendlychat-web/web'...
 [info] 
-[debug] [2018-09-16T16:24:30.993Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/228532523450/clients/_:getWebAppConfig  
+[debug] [2018-09-16T22:10:38.771Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/228532523450/clients/_:getWebAppConfig  
  
-[debug] [2018-09-16T16:24:31.174Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-16T22:10:39.061Z] <<< HTTP RESPONSE 200
 [info] i  hosting[kelbert-translator-chat]: Serving hosting files from: ./
 [info] ✔  hosting[kelbert-translator-chat]: Local server: http://localhost:5000
