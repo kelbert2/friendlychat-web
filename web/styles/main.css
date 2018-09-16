@@ -96,7 +96,8 @@ main, #messages-card {
   display: inline-block;
   width: 100%;
   padding-left: 40px;
-  color: #bbb;
+  /*color: #bbb;*/
+    color: #9a3960;
   font-style: italic;
   font-size: 12px;
   box-sizing: border-box;
@@ -177,7 +178,9 @@ main, #messages-card {
   }
   #user-container {
     top: 72px;
-    background-color: rgb(3,155,229);
+      /*background-color:  #039be5;*/
+    background-color: #9a3960;
+      /*light purple*/
     height: 38px;
     padding-top: 3px;
     padding-right: 2px;
@@ -190,16 +193,24 @@ main, #messages-card {
   }
 }
 .mdl-textfield__label:after {
-  background-color: #0288D1;
+  /*background-color: #0288D1;*/
+    background-color: #680036;
+    /*dark purple*/
 }
 .mdl-textfield--floating-label.is-focused .mdl-textfield__label {
-  color: #0288D1;
+  /*color: #0288D1;*/
+    color: #680036;
+    /*dark purple*/
 }
 .mdl-button .material-icons {
   top: -1px;
   margin-right: 5px;
 }
 
-#langOption {
-  
+select {
+  box-sizing: content-box;
+  padding: 6px 10px;
+}
+.language-selector {
+    width: auto
 }

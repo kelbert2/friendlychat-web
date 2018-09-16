@@ -1,32 +1,28 @@
-[debug] [2018-09-16T16:00:15.579Z] ----------------------------------------------------------------------
-[debug] [2018-09-16T16:00:15.582Z] Command:       /usr/local/Cellar/node/10.10.0/bin/node /usr/local/bin/firebase serve
-[debug] [2018-09-16T16:00:15.582Z] CLI Version:   4.2.1
-[debug] [2018-09-16T16:00:15.582Z] Platform:      darwin
-[debug] [2018-09-16T16:00:15.582Z] Node Version:  v10.10.0
-[debug] [2018-09-16T16:00:15.590Z] Time:          Sun Sep 16 2018 12:00:15 GMT-0400 (Eastern Daylight Time)
-[debug] [2018-09-16T16:00:15.590Z] ----------------------------------------------------------------------
+[debug] [2018-09-16T16:24:30.333Z] ----------------------------------------------------------------------
+[debug] [2018-09-16T16:24:30.336Z] Command:       /usr/local/Cellar/node/10.10.0/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2018-09-16T16:24:30.336Z] CLI Version:   4.2.1
+[debug] [2018-09-16T16:24:30.336Z] Platform:      darwin
+[debug] [2018-09-16T16:24:30.336Z] Node Version:  v10.10.0
+[debug] [2018-09-16T16:24:30.338Z] Time:          Sun Sep 16 2018 12:24:30 GMT-0400 (Eastern Daylight Time)
+[debug] [2018-09-16T16:24:30.338Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-09-16T16:00:15.604Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-09-16T16:00:15.604Z] > authorizing via signed-in user
-[debug] [2018-09-16T16:00:15.606Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/kelbert-translator-chat  
+[debug] [2018-09-16T16:24:30.355Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-16T16:24:30.355Z] > authorizing via signed-in user
+[debug] [2018-09-16T16:24:30.359Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-09-16T16:24:30.359Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+
+[debug] [2018-09-16T16:24:30.555Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-16T16:24:30.594Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/kelbert-translator-chat  
  
-[debug] [2018-09-16T16:00:15.918Z] <<< HTTP RESPONSE 200
-[debug] [2018-09-16T16:00:15.920Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/kelbert-translator-chat  
+[debug] [2018-09-16T16:24:30.861Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-16T16:24:30.863Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/kelbert-translator-chat  
  
-[debug] [2018-09-16T16:00:16.157Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-16T16:24:30.989Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Users/admin/Documents/HCI/friendlychat-web/web'...
 [info] 
-[info] i  functions: Preparing to emulate functions.
-[debug] [2018-09-16T16:00:17.505Z] Fetching environment
-[debug] [2018-09-16T16:00:17.510Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/228532523450:getServerAppConfig  
+[debug] [2018-09-16T16:24:30.993Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/228532523450/clients/_:getWebAppConfig  
  
-[debug] [2018-09-16T16:00:17.512Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/228532523450/clients/_:getWebAppConfig  
- 
-[debug] [2018-09-16T16:00:17.693Z] <<< HTTP RESPONSE 200
-[debug] [2018-09-16T16:00:17.694Z] Starting @google-cloud/functions-emulator
-[debug] [2018-09-16T16:00:17.810Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-16T16:24:31.174Z] <<< HTTP RESPONSE 200
 [info] i  hosting[kelbert-translator-chat]: Serving hosting files from: ./
 [info] ✔  hosting[kelbert-translator-chat]: Local server: http://localhost:5000
-[debug] [2018-09-16T16:00:19.864Z] Parsing function triggers
-[info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.
