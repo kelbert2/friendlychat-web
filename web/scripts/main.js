@@ -158,7 +158,7 @@ function onMessageFormSubmit(e) {
     // console.log(messageInputElement.value);
     // let content = [{'Text' : messageInputElement.value}];
     // console.log(Translate(JSON.stringify(content)));
-      let chosenLanguage = $("#langOption :selected").val();
+      let chosenLanguage = $("#selectTargetLanguage :selected").val();
       // console.log(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`);
       postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: messageInputElement.value}])
           .then(data => saveMessage(data[0].translations[0].text).then(function() {
@@ -169,6 +169,13 @@ function onMessageFormSubmit(e) {
           .catch(error => console.error(error));
   }
 }
+
+// translateMessage(callback) => json{
+//     let chosenLanguage = $("#selectTargetLanguage :selected").val();
+//     postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: messageInputElement.value}])
+//         return data;
+//
+// }
 
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
 function authStateObserver(user) {
@@ -253,6 +260,7 @@ function displayMessage(key, name, text, picUrl, imageUrl) {
   var messageElement = div.querySelector('.message');
   if (text) { // If the message is text.
     messageElement.textContent = text;
+    // TODO may need to translate here
     // Replace all line breaks by <br>.
     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
   } else if (imageUrl) { // If the message is an image.
@@ -314,6 +322,8 @@ signInButtonElement.addEventListener('click', signIn);
 // Toggle for the button.
 messageInputElement.addEventListener('keyup', toggleButton);
 messageInputElement.addEventListener('change', toggleButton);
+
+// TODO add click event listener for change in selection
 
 // Events for image upload.
 imageButtonElement.addEventListener('click', function(e) {

@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     let select = $('#selectTargetLanguage')
-    $.getJSON("scripts/countryjson.json", function (data) {
+    $.getJSON("scripts/languageCode.json", function (data) {
         $.each(data, function (key, value) {
             // Set the value, creating a new option if necessary
             /*if (select.find("option[value='" + value['Code'] + "']").length) {
