@@ -1,0 +1,262 @@
+[
+  {
+    "Country": "Afrikaans",
+    "Code": "af"
+  },
+  {
+    "Country": "Arabic",
+    "Code": "ar"
+  },
+  {
+    "Country": "Arabic, Levantine",
+    "Code": "apc"
+  },
+  {
+    "Country": "Bangla",
+    "Code": "bn"
+  },
+  {
+    "Country": "Bosnian (Latin)",
+    "Code": "bs"
+  },
+  {
+    "Country": "Bulgarian",
+    "Code": "bg"
+  },
+  {
+    "Country": "Cantonese (Traditional)",
+    "Code": "yue"
+  },
+  {
+    "Country": "Catalan",
+    "Code": "ca"
+  },
+  {
+    "Country": "Chinese Simplified",
+    "Code": "zh-Hans"
+  },
+  {
+    "Country": "Chinese Traditional",
+    "Code": "zh-Hant"
+  },
+  {
+    "Country": "Croatian",
+    "Code": "hr"
+  },
+  {
+    "Country": "Czech",
+    "Code": "cs"
+  },
+  {
+    "Country": "Danish",
+    "Code": "da"
+  },
+  {
+    "Country": "Dutch",
+    "Code": "nl"
+  },
+  {
+    "Country": "English",
+    "Code": "en"
+  },
+  {
+    "Country": "Estonian",
+    "Code": "et"
+  },
+  {
+    "Country": "Fijian",
+    "Code": "fj"
+  },
+  {
+    "Country": "Filipino",
+    "Code": "fil"
+  },
+  {
+    "Country": "Finnish",
+    "Code": "fi"
+  },
+  {
+    "Country": "French",
+    "Code": "fr"
+  },
+  {
+    "Country": "German",
+    "Code": "de"
+  },
+  {
+    "Country": "Greek",
+    "Code": "el"
+  },
+  {
+    "Country": "Haitian Creole",
+    "Code": "ht"
+  },
+  {
+    "Country": "Hebrew",
+    "Code": "he"
+  },
+  {
+    "Country": "Hindi",
+    "Code": "hi"
+  },
+  {
+    "Country": "Hmong Daw",
+    "Code": "mww"
+  },
+  {
+    "Country": "Hungarian",
+    "Code": "hu"
+  },
+  {
+    "Country": "Icelandic",
+    "Code": "is"
+  },
+  {
+    "Country": "Indonesian",
+    "Code": "id"
+  },
+  {
+    "Country": "Italian",
+    "Code": "it"
+  },
+  {
+    "Country": "Japanese",
+    "Code": "ja"
+  },
+  {
+    "Country": "Kiswahili",
+    "Code": "sw"
+  },
+  {
+    "Country": "Klingon",
+    "Code": "tlh"
+  },
+  {
+    "Country": "Klingon (plqaD)",
+    "Code": "tlh-Qaak"
+  },
+  {
+    "Country": "Korean",
+    "Code": "ko"
+  },
+  {
+    "Country": "Latvian",
+    "Code": "lv"
+  },
+  {
+    "Country": "Lithuanian",
+    "Code": "lt"
+  },
+  {
+    "Country": "Malagasy",
+    "Code": "mg"
+  },
+  {
+    "Country": "Malay",
+    "Code": "ms"
+  },
+  {
+    "Country": "Maltese",
+    "Code": "mt"
+  },
+  {
+    "Country": "Norwegian",
+    "Code": "nb"
+  },
+  {
+    "Country": "Persian",
+    "Code": "fa"
+  },
+  {
+    "Country": "Polish",
+    "Code": "pl"
+  },
+  {
+    "Country": "Portuguese",
+    "Code": "pt"
+  },
+  {
+    "Country": "Queretaro Otomi",
+    "Code": "otq"
+  },
+  {
+    "Country": "Romanian",
+    "Code": "ro"
+  },
+  {
+    "Country": "Russian",
+    "Code": "ru"
+  },
+  {
+    "Country": "Samoan",
+    "Code": "sm"
+  },
+  {
+    "Country": "Serbian (Cyrillic)",
+    "Code": "sr-Cyrl"
+  },
+  {
+    "Country": "Serbian (Latin)",
+    "Code": "sr-Latn"
+  },
+  {
+    "Country": "Slovak",
+    "Code": "sk"
+  },
+  {
+    "Country": "Slovenian",
+    "Code": "sl"
+  },
+  {
+    "Country": "Spanish",
+    "Code": "es"
+  },
+  {
+    "Country": "Swedish",
+    "Code": "sv"
+  },
+  {
+    "Country": "Tahitian",
+    "Code": "ty"
+  },
+  {
+    "Country": "Tamil",
+    "Code": "ta"
+  },
+  {
+    "Country": "Telugu",
+    "Code": "te"
+  },
+  {
+    "Country": "Thai",
+    "Code": "th"
+  },
+  {
+    "Country": "Tongan",
+    "Code": "to"
+  },
+  {
+    "Country": "Turkish",
+    "Code": "tr"
+  },
+  {
+    "Country": "Ukrainian",
+    "Code": "uk"
+  },
+  {
+    "Country": "Urdu",
+    "Code": "ur"
+  },
+  {
+    "Country": "Vietnamese",
+    "Code": "vi"
+  },
+  {
+    "Country": "Welsh",
+    "Code": "cy"
+  },
+  {
+    "Country": "Yucatec Maya",
+    "Code": "yua"
+  }
+]

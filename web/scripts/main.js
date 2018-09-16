@@ -155,11 +155,18 @@ function onMessageFormSubmit(e) {
   e.preventDefault();
   // Check that the user entered a message and is signed in.
   if (messageInputElement.value && checkSignedInWithMessage()) {
-    saveMessage(messageInputElement.value).then(function() {
-      // Clear message text field and re-enable the SEND button.
-      resetMaterialTextfield(messageInputElement);
-      toggleButton();
-    });
+    // console.log(messageInputElement.value);
+    // let content = [{'Text' : messageInputElement.value}];
+    // console.log(Translate(JSON.stringify(content)));
+      let chosenLanguage = $("#langOption :selected").val();
+      // console.log(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`);
+      postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: messageInputElement.value}])
+          .then(data => saveMessage(data[0].translations[0].text).then(function() {
+              // Clear message text field and re-enable the SEND button.
+              resetMaterialTextfield(messageInputElement);
+              toggleButton();
+          })) // JSON-string from `response.json()` call
+          .catch(error => console.error(error));
   }
 }
 

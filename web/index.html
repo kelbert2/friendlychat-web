@@ -48,6 +48,14 @@
   <!-- App Styling -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="styles/main.css">
+
+  <script
+          src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
 </head>
 <body>
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -103,8 +111,19 @@
         <button class="mdl-snackbar__action" type="button"></button>
       </div>
 
+      <div id="selectTargetLanguageDropdown">
+        <select id="langOption" class="languageOptions" name="state">
+        </select>
+      </div>
+
     </div>
   </main>
+
+  <div>
+    <div>
+      <button type="button">Go To Qualtrics Link</button>
+    </div>
+  </div>
 </div>
 
 <!-- Import and configure the Firebase SDK -->
@@ -116,7 +135,9 @@
 <script src="/__/firebase/5.5.0/firebase-storage.js"></script>
 <script src="/__/firebase/5.5.0/firebase-messaging.js"></script>
 <script src="/__/firebase/init.js"></script>
-
+<script src="scripts/Translate.js"></script>
 <script src="scripts/main.js"></script>
+<script src="scripts/dropdownStuff.js"></script>
+
 </body>
 </html>
