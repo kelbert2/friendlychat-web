@@ -216,11 +216,15 @@ main, #messages-card {
     color: white;
     /*need to set text to white so it'll be visible against this background*/
 }
+.medium-purple-text {
+    color: #680036;
+}
 
 .dark-purple-background {
     background-color: #390010;
     color: white;
 }
+/*select2-results are the individual options*/
 .select2-class, .select2, .select2-results {
     color: black;
 }
@@ -233,4 +237,23 @@ select {
 }
 .language-selector {
     width: auto
+}
+#submit, .help-button {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+#submit > i, .help-button > i {
+    font-size: 1.5em;
+    top: 0px;
+    margin: 0;
+}
+.help-button {
+cursor: pointer;
+}
+{
+    font-size: 1.5em;
 }
