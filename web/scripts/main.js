@@ -205,7 +205,7 @@ var MESSAGE_TEMPLATE =
     '<div class="message"></div>' +
     '<div class="message-bottom"> ' +
     '<div class="name"></div>' +
-    '<button class="error-button mdl-button mdl-js-button mdl-button--accent" title="Report Error" onClick=>' +
+    '<button class="error-button mdl-button mdl-js-button mdl-button--accent" title="Report Error" onClick="reportErrorClick()">' +
     '<i class="material-icons">error</i></button>' +
     '</div>' +
     '</div>';
@@ -342,7 +342,7 @@ for (i = 0; i < close.length; i++) {
         setTimeout(function(){ div.style.display = "none"; }, 600);
     }
 }
-// Error reporting
+// Error reporting and display an alert
 function reportError(messageText, messageID){
   close[0].parentElement.style.display = 'block';
 
@@ -355,7 +355,12 @@ function reportError(messageText, messageID){
         console.error('Error reporting error to Firebase Database', error);
     });
 }
-// Error alert
+// click event
+// TODO errors are never actually sent because the world is full of lies
+function reportErrorClick(){
+    //reportError($(this).querySelector('.message').text, $(this).attr("id"));
+    reportError("hi, Zuko here", 6);
+}
 
 // end ERRORS --------------------------------------------------------------------------
 
@@ -394,14 +399,15 @@ $('#selectTargetLanguage').on("change", function() {
         }
 });
 // Attach a delegated event handler with a more refined selector
- $( ".message-container" ).on( "click", ".error-button", function( event ) {
+/*
+ $('.message-container').on( "click", ".error-button", function( event ) {
    // gets the message child's inner text
      //reportError($(this).children[1].text, $(this).attr("id"));
      //$(this).attr("id")
-     reportError($(this).querySelector('.message').text, $(this).attr("id"));
+     console.log("bubble");
+     reportError($(this).querySelector('.message').text, $(this).attr('id'));
  });
-
-
+ */
 
 // Events for image upload.
 imageButtonElement.addEventListener('click', function(e) {
