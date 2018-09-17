@@ -253,6 +253,7 @@ select {
 }
 .help-button {
 cursor: pointer;
+    margin: 15px;
 }
 .message-bottom {
     display: flex;
@@ -264,4 +265,36 @@ cursor: pointer;
     flex-flow: row wrap;
     justify-content: space-evenly;
     align-content: center;
+}
+
+/* https://www.w3schools.com/howto/howto_js_alert.asp */
+.alert {
+    padding: 20px;
+    margin: 15px;
+    /* initally don't want displaying */
+    display: none;
+    opacity: 1;
+    transition: opacity 0.6s; /* 600ms to fade out */
+}
+.neutral {
+    background-color: rgb(255,171,64); /* Accent orange color */
+    color: black;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.neutral > .closebtn {
+    color: black;
+}
+/* When moving the mouse over the close button */
+.neutral > .closebtn:hover {
+    color: white;
 }
