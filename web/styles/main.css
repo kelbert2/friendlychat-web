@@ -21,6 +21,18 @@ main, #messages-card {
   height: 90%;
   padding-bottom: 0;
 }
+main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /*from .mdl-layout__content*/
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-grow: 1;
+    z-index: 1;
+}
 #messages-card-container {
   height: calc(100% - 35px);
   padding-bottom: 0;
@@ -28,9 +40,14 @@ main, #messages-card {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    /*added to fit with sidebar*/
+    width: calc(100% - 16px);
 }
 #messages-card {
   margin-top: 15px;
+    /*added to fit with sidebar*/
+    width: 80%;
 }
 .mdl-layout__header-row span {
   margin-left: 15px;
@@ -275,6 +292,7 @@ cursor: pointer;
     display: none;
     opacity: 1;
     transition: opacity 0.6s; /* 600ms to fade out */
+    border-radius: 3px;
 }
 .neutral {
     background-color: rgb(255,171,64); /* Accent orange color */
@@ -297,4 +315,15 @@ cursor: pointer;
 /* When moving the mouse over the close button */
 .neutral > .closebtn:hover {
     color: white;
+}
+
+.image-grid {
+    display: none;
+}
+.qualtrics-button {
+    margin: 20px;
+}
+.sidebar {
+    align-self: flex-end;
+    width: 40%;
 }
