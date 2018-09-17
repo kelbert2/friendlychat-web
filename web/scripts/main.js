@@ -158,21 +158,21 @@ function onMessageFormSubmit(e) {
     // console.log(messageInputElement.value);
     // let content = [{'Text' : messageInputElement.value}];
     // console.log(Translate(JSON.stringify(content)));
-    //   let chosenLanguage = $("#selectTargetLanguage :selected").val();
-    //   // console.log(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`);
-    //   postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: messageInputElement.value}])
-    //       .then(data => saveMessage(data[0].translations[0].text).then(function() {
-    //           // Clear message text field and re-enable the SEND button.
-    //           resetMaterialTextfield(messageInputElement);
-    //           toggleButton();
-    //       })) // JSON-string from `response.json()` call
-    //       .catch(error => console.error(error));
-      saveMessage(messageInputElement.value).then(function() {
-                    // Clear message text field and re-enable the SEND button.
-                    resetMaterialTextfield(messageInputElement);
-                    toggleButton();
-                }) // JSON-string from `response.json()` call
-                .catch(error => console.error("Save message error: " + error));
+      let chosenLanguage = $("#selectTargetLanguage :selected").val();
+      // console.log(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`);
+      postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: messageInputElement.value}])
+          .then(data => saveMessage(data[0].translations[0].text).then(function() {
+              // Clear message text field and re-enable the SEND button.
+              resetMaterialTextfield(messageInputElement);
+              toggleButton();
+          })) // JSON-string from `response.json()` call
+          .catch(error => console.error(error));
+      // saveMessage(messageInputElement.value).then(function() {
+      //               // Clear message text field and re-enable the SEND button.
+      //               resetMaterialTextfield(messageInputElement);
+      //               toggleButton();
+      //           }) // JSON-string from `response.json()` call
+      //           .catch(error => console.error("Save message error: " + error));
   }
 }
 function translateMessage(message) {
@@ -183,6 +183,8 @@ function translateMessage(message) {
           console.log("translation: " + data[0].translations[0].text);
           return data[0].translations[0].text;
           // TODO might not be returning, because not displaying in the app
+        }).then(function (text) {
+
         })
         .catch(function(error) {
           console.error("Translate message error: " + error);
@@ -261,7 +263,8 @@ var MESSAGE_TEMPLATE =
       '<div class="message"></div>' +
       '<div class="message-bottom"> ' +
       '<div class="name"></div>' +
-      '<button class="error-button mdl-button mdl-js-button mdl-button--accent" title="Report Error" onclick="reportError()"><i class="material-icons">error</i></button>' +
+      '<button class="error-button mdl-button mdl-js-button mdl-button--accent" title="Report Error" onclick=reportError("test")>' +
+    '<i class="material-icons">error</i></button>' +
       '</div>' +
     '</div>';
 
@@ -285,14 +288,21 @@ function displayMessage(key, name, text, picUrl, imageUrl) {
   div.querySelector('.name').textContent = name;
   var messageElement = div.querySelector('.message');
   if (text) { // If the message is text.
+    // let translatedVal = translateMessage(text);
+    //   let translatedVal = text;
+    //   let chosenLanguage = $("#selectTargetLanguage :selected").val();
+    //   postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: text}])
+    //       .then(function(data) {
+    //           translatedVal = data[0].translations[0].text;
+    //           // TODO might not be returning, because not displaying in the app
+    //       });
+    // console.log('what the fuck:' + translatedVal);
     try {
-        messageElement.textContent = translateMessage(text);
+        messageElement.textContent = text;
     } catch (error) {
       messageElement.textContent = text;
       console.error("Loading translation error: " + error);
     }
-
-
 
     // TODO may need to translate here
     // Replace all line breaks by <br>.
@@ -361,6 +371,12 @@ messageInputElement.addEventListener('change', toggleButton);
 
 //  Signals change in language selector
 //languageSelectorElement.addEventListener('change', translateMessage);
+// Attach a delegated event handler with a more refined selector
+// $( ".message-container" ).on( "click", ".error-button", function( event ) {
+//   // gets the message child's inner text
+//     reportError($(this).children[2].text(), $(this).attr("id"));
+// });
+
 
 // Events for image upload.
 imageButtonElement.addEventListener('click', function(e) {
@@ -370,12 +386,12 @@ imageButtonElement.addEventListener('click', function(e) {
 mediaCaptureElement.addEventListener('change', onMediaFileSelected);
 
 // Error reporting
-function reportError(messageText, ){
-  console.log("there's an error");
+function reportError(messageText, messageID){
+  console.log("there's an error: ");
     return firebase.database().ref('/errors/').push({
-        originalText: messageText,
-        translatedText: messageText,
-        targetLanguage: getProfilePicUrl()
+        // messageID: messageID,
+        errorMessage: messageText
+        // targetLanguage: $("#selectTargetLanguage :selected").val()
     }).catch(function(error) {
         console.error('Error reporting error to Firebase Database', error);
     });
