@@ -205,7 +205,7 @@ var MESSAGE_TEMPLATE =
     '<div class="message"></div>' +
     '<div class="message-bottom"> ' +
     '<div class="name"></div>' +
-    '<button class="error-button mdl-button mdl-js-button mdl-button--accent" title="Report Error" onclick=reportError("test")>' +
+    '<button class="error-button mdl-button mdl-js-button mdl-button--accent" title="Report Error" onClick=>' +
     '<i class="material-icons">error</i></button>' +
     '</div>' +
     '</div>';
@@ -253,30 +253,8 @@ function displayMessage(key, name, text, picUrl, imageUrl) {
 }
 // displays a message that's made up of text
 function displayTextMessage(messageElement, text){
-    // let translatedVal = translateMessage(text);
-    //   let translatedVal = text;
-    //   let chosenLanguage = $("#selectTargetLanguage :selected").val();
-    //   postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: text}])
-    //       .then(function(data) {
-    //           translatedVal = data[0].translations[0].text;
-    //           // TODO might not be returning, because not displaying in the app
-    //       });
-    // console.log('what the fuck:' + translatedVal);
-    // try {
-    let translatedVal = translateMessage(text);
-    // if(hasTranslation) {
-    console.log("Translation: "+ translatedVal);
-    messageElement.textContent = translatedVal;
-    //     }
-    //     hasTranslation = false;
-    // } catch (error) {
-    //     messageElement.textContent = text;
-    //     console.error("Loading translation error: " + error);
-    // }
-
-    // TODO may need to translate here
-    // Replace all line breaks by <br>.
-    messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
+    messageElement.textContent = text.replace(/\n/g, '<br>');
+    onLoadText(text, messageElement);
 }
 // end MESSAGES -----------------------------------------------------------------------
 
@@ -332,30 +310,17 @@ function onMediaFileSelected(event) {
 // end IMAGES -----------------------------------------------------------------------------
 
 // TRANSLATION -----------------------------------------------------------------------------
-var hasTranslation = false;
-function translateMessageHelper(message) {
-  console.log("at helper");
-  hasTranslation = true;
-  return message
+
+function onLoadText(text, messageElement) {
+    let chosenLanguage = $("#selectTargetLanguage :selected").val();
+    postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: text}])
+        .then(data => updateText(data[0].translations[0].text, messageElement))
+            .catch(error => console.error("Translating text error: " + error));
 }
 
-function translateMessage(message) {
-    let chosenLanguage = $("#selectTargetLanguage :selected").val();
-    console.log("At translateMessage");
-    // console.log(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`);
-    postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: message}])
-        .then(data => translateMessageHelper(data[0].translations[0].text)) // JSON-string from `response.json()` call
-        .catch(error => console.error("Translate message error: " + error));
-    // try {
-    //     postData(`https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=${chosenLanguage}`, [{Text: message}])
-    //         .then(function(data) {
-    //             return data[0].translations[0].text;
-    //         })
-    // } catch(error) {
-    //     console.error("Translate message error: " + error);
-    //     return message;
-    // }
-// TODO maybe also report this as an error using reportError()
+function updateText(text, messageElement){
+  //document.getElementById(id).children[1].update(text);
+    messageElement.textContent = text;
 }
 // end TRANSLATION ---------------------------------------------------------------------
 
@@ -380,11 +345,12 @@ for (i = 0; i < close.length; i++) {
 // Error reporting
 function reportError(messageText, messageID){
   close[0].parentElement.style.display = 'block';
+
   console.log("there's an error: ");
     return firebase.database().ref('/errors/').push({
-        // messageID: messageID,
-        errorMessage: messageText
-        // targetLanguage: $("#selectTargetLanguage :selected").val()
+         messageID: messageID,
+         errorMessage: messageText,
+         targetLanguage: $("#selectTargetLanguage :selected").val()
     }).catch(function(error) {
         console.error('Error reporting error to Firebase Database', error);
     });
@@ -416,13 +382,25 @@ signInButtonElement.addEventListener('click', signIn);
 messageInputElement.addEventListener('keyup', toggleButton);
 messageInputElement.addEventListener('change', toggleButton);
 
-//  Signals change in language selector
-//languageSelectorElement.addEventListener('change', translateMessage);
+//  Signals change in language selector to retranslate text in existing messages
+//languageSelectorElement.addEventListener('change', testLoadMessages);
+$('#selectTargetLanguage').on("change", function() {
+        console.log("noticed a change in language!");
+        let msgs = document.getElementsByClassName("message");
+        var iter;
+// Loop through all close buttons
+        for (iter = 0; iter < msgs.length; iter++) {
+            onLoadText(msgs[iter].textContent, msgs[iter]);
+        }
+});
 // Attach a delegated event handler with a more refined selector
-// $( ".message-container" ).on( "click", ".error-button", function( event ) {
-//   // gets the message child's inner text
-//     reportError($(this).children[2].text(), $(this).attr("id"));
-// });
+ $( ".message-container" ).on( "click", ".error-button", function( event ) {
+   // gets the message child's inner text
+     //reportError($(this).children[1].text, $(this).attr("id"));
+     //$(this).attr("id")
+     reportError($(this).querySelector('.message').text, $(this).attr("id"));
+ });
+
 
 
 // Events for image upload.
